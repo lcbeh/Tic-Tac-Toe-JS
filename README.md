@@ -1,7 +1,7 @@
 # Tic-Tac-Toe
 
 ## The Brief
-The rules of tic-tac-toe are as follows:
+Implement the business logic for tic-tac-toe:
 
 - There are two players in the game (X and O)
 - Players take turns until the game is over
@@ -29,8 +29,8 @@ The rules of tic-tac-toe are as follows:
 
 ## Installation
 
-- Clone this repo **git clone **
-- **cd tic_tac_toe_js**
+- Clone this repo **git clone git@github.com:lcbeh/Tic-Tac-Toe-JS.git**
+- **cd Tic-Tac-Toe-JS**
 - **open SpecRunner.html** for specs
 - Open console (developer's tool) on your browser to play
 
