@@ -17,7 +17,7 @@ describe("Game", function() {
   });
 
   it("can allows users to switch turn", function () {
-    game.switchTurn();
+    game._switchTurn();
     expect(game.currentPlayer).toEqual("o");
   });
 
@@ -28,8 +28,18 @@ describe("Game", function() {
 
   it("prevents players from claiming the same field", function () {
     game.markField("x", 4);
-    console.log(game.markField("o", 4));
-    expect(game.markField("o", 4)).toEqual("Field has been claimed.Choose another field.")
+    expect(game.markField("o", 4)).toEqual("Field has been claimed.Choose another field.");
+  });
+
+  it("knows when a winner wins", function () {
+    game._fields = ["x", "x", "x", 4, 5, 6, 7, 8, 9]
+    expect(game.gameWon()).toEqual(true);
+  });
+
+  it("is over when a player wins", function() {
+    spyOn(game, "gameWon").and.returnValue(true);
+    game.checkStatus();
+    expect(game.winner).toEqual("Player 1");
   });
 
 });
