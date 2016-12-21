@@ -32,7 +32,12 @@ Game.prototype._switchTurn = function () {
 };
 
 Game.prototype._checkField = function (index) {
-  return typeof this._fields[index - 1] === "number";
+  var self = this;
+  if (this._fields.every(field => typeof field === "string")) {
+    self.gameOver();
+  } else {
+    return typeof self._fields[index - 1] === "number";
+  }
 };
 
 Game.prototype.checkStatus = function () {
@@ -47,6 +52,8 @@ Game.prototype.gameWon = function () {
 };
 
 Game.prototype.gameOver = function () {
-  this.winner = this.currentPlayer === "x" ? "Player 1" : "Player 2";
+  if (this.gameWon()) {
+    this.winner = this.currentPlayer === "x" ? "Player 1" : "Player 2";
+  }
   this._fields = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 };

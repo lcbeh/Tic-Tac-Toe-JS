@@ -42,4 +42,16 @@ describe("Game", function() {
     expect(game.winner).toEqual("Player 1");
   });
 
+  it("is over when all fields are claimed", function() {
+    game._fields = ["x", "x", "o", "o", "o", "x", "x", "x", "o"];
+    game._checkField();
+    expect(game._fields).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  });
+
+  it("has no winner when game is draw", function() {
+    game._fields = ["x", "x", "o", "o", "o", "x", "x", "x", "o"];
+    game._checkField();
+    expect(game.winner).toEqual(null);
+  });
+
 });
