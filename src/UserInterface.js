@@ -1,11 +1,9 @@
 "use strict";
 
 function UserInterface() {
-  this.board = new Game().showFields();
 }
 
-// refactor this method
-UserInterface.prototype.displayGrid = function () {
+UserInterface.prototype.displayBoard = function (array) {
   var horizontalGrid = " \n --- --- ---\n  "
-  return " " + this.board[0]+ " | " + this.board[1] + " | " + this.board[2] + horizontalGrid + this.board[3]+ " | " + this.board[4] + " | " + this.board[5] + horizontalGrid + this.board[6]+ " | " + this.board[7] + " | " + this.board[8] + " ";
+  return " " + array[0]+ " | " + array[1] + " | " + array[2] + horizontalGrid + array[3]+ " | " + array[4] + " | " + array[5] + horizontalGrid + array[6]+ " | " + array[7] + " | " + array[8] + " ";
 };

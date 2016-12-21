@@ -15,11 +15,9 @@ The rules of tic-tac-toe are as follows:
 
 #### Modelling the Domain
 
-**Board**
+**Game**
 - has 9 fields
 - marks relevant field with "x" or "o"
-
-**Game**
 - allows player to claim a field
 - switch turn between players
 - knows the rules of the game
@@ -27,12 +25,6 @@ The rules of tic-tac-toe are as follows:
 
 **Interface**
 - prints board on output
-- asks user for input
 - update fields on output
-- informs the users their turn
-- declares game is over
-- declares winner
-
-After assigning responsibilities to each of the classes, I start writing tests (Jasmine) for the app.
 
 ## Installation

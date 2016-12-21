@@ -12,7 +12,7 @@ describe("Game", function() {
   });
 
   it("can mark a field", function(){
-    game.markField("x", 4);
+    game.markField(4);
     expect(game.showFields()).toEqual([1, 2, 3, "x", 5, 6, 7, 8, 9]);
   });
 
@@ -22,13 +22,13 @@ describe("Game", function() {
   });
 
   it("switch turns automatically after a player claims a field", function () {
-    game.markField("x", 4);
+    game.markField(4);
     expect(game.currentPlayer).toEqual("o");
   });
 
   it("prevents players from claiming the same field", function () {
-    game.markField("x", 4);
-    expect(game.markField("o", 4)).toEqual("Field has been claimed.Choose another field.");
+    game.markField(4);
+    expect(game.markField(4)).toEqual("Field has been claimed.Choose another field.");
   });
 
   it("knows when a winner wins", function () {
@@ -44,14 +44,19 @@ describe("Game", function() {
 
   it("is over when all fields are claimed", function() {
     game._fields = ["x", "x", "o", "o", "o", "x", "x", "x", "o"];
-    game._checkField();
-    expect(game._fields).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    expect(game.gameDraw()).toBe(true);
+    expect(game.gameOver()).toEqual("Game ends in a draw");
   });
 
   it("has no winner when game is draw", function() {
     game._fields = ["x", "x", "o", "o", "o", "x", "x", "x", "o"];
-    game._checkField();
     expect(game.winner).toEqual(null);
+  });
+
+  it("can reset the game", function () {
+    game._fields = ["x", "x", "o", "o", "o", "x", "x", "x", "o"];
+    game.reset();
+    expect(game.showFields()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   });
 
 });
