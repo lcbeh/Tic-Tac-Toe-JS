@@ -40,6 +40,7 @@ describe("Game", function() {
     spyOn(game, "gameWon").and.returnValue(true);
     game.checkStatus();
     expect(game.winner).toEqual("Player 1");
+    expect(game.gameOver()).toEqual("Player 1 won!")
   });
 
   it("is over when all fields are claimed", function() {

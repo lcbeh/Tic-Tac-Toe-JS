@@ -55,6 +55,7 @@ Game.prototype.gameWon = function () {
 Game.prototype.gameOver = function () {
   if (this.gameWon()) {
     this.winner = this.currentPlayer === "x" ? "Player 1" : "Player 2";
+    return "" + this.winner + " won!"
   } else {
     return "Game ends in a draw"
   }
