@@ -20,10 +20,11 @@ Game.prototype.showFields = function() {
 
 Game.prototype.markField = function (index) {
   if (this.gameWon() || this.gameDraw()) {
-    return "Game is over"
+    return "Game is over." + this.gameOver();
   } else if (this._checkFieldIsTaken(index)) {
     this._fields[index - 1] = this.currentPlayer;
     this.checkStatus();
+    return this.gameOver();
   } else {
     return "Field has been claimed.Choose another field."
   }
@@ -52,11 +53,13 @@ Game.prototype.gameWon = function () {
   });
 };
 
+
+
 Game.prototype.gameOver = function () {
   if (this.gameWon()) {
     this.winner = this.currentPlayer === "x" ? "Player 1" : "Player 2";
     return "" + this.winner + " won!"
-  } else {
+  } else if (this.gameDraw()) {
     return "Game ends in a draw"
   }
 };
