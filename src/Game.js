@@ -19,12 +19,12 @@ Game.prototype.showFields = function() {
 };
 
 Game.prototype.markField = function (index) {
-  if (this.gameWon() || this.gameDraw()) {
-    return "Game is over." + this.gameOver();
+  if (this.gameOver()) {
+    return "Game is over." + this.declareWinner();
   } else if (this._checkFieldIsTaken(index)) {
     this._fields[index - 1] = this.currentPlayer;
     this.checkStatus();
-    return this.gameOver();
+    return this.declareWinner();
   } else {
     return "Field has been claimed.Choose another field."
   }
@@ -39,7 +39,7 @@ Game.prototype._checkFieldIsTaken = function (index) {
 };
 
 Game.prototype.checkStatus = function () {
-  this.gameWon() ? this.gameOver() : this._switchTurn();
+  this.gameWon() ? this.declareWinner() : this._switchTurn();
 };
 
 Game.prototype.gameDraw = function () {
@@ -53,9 +53,11 @@ Game.prototype.gameWon = function () {
   });
 };
 
-
-
 Game.prototype.gameOver = function () {
+  return this.gameWon() || this.gameDraw();
+};
+
+Game.prototype.declareWinner = function () {
   if (this.gameWon()) {
     this.winner = this.currentPlayer === "x" ? "Player 1" : "Player 2";
     return "" + this.winner + " won!"

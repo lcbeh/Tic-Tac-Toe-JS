@@ -28,3 +28,11 @@ The rules of tic-tac-toe are as follows:
 - update fields on output
 
 ## Installation
+
+- Clone this repo **git clone **
+- **cd tic_tac_toe_js**
+- **open SpecRunner.html** for specs
+- Open console (developer's tool) on your browser to play
+
+## Interaction example
+![](image/ScreenShot.png)

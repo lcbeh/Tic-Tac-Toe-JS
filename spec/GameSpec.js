@@ -40,13 +40,13 @@ describe("Game", function() {
     spyOn(game, "gameWon").and.returnValue(true);
     game.checkStatus();
     expect(game.winner).toEqual("Player 1");
-    expect(game.gameOver()).toEqual("Player 1 won!")
+    expect(game.declareWinner()).toEqual("Player 1 won!")
   });
 
   it("is over when all fields are claimed", function() {
     game._fields = ["x", "x", "o", "o", "o", "x", "x", "x", "o"];
     expect(game.gameDraw()).toBe(true);
-    expect(game.gameOver()).toEqual("Game ends in a draw");
+    expect(game.declareWinner()).toEqual("Game ends in a draw");
   });
 
   it("has no winner when game is draw", function() {
